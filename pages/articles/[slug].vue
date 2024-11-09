@@ -15,11 +15,11 @@
 <script setup>
 const route = useRoute();
 const { slug } = route.params;
-useSeoMeta({
-  ogImage: `https://fayazahmed.com/articles/${slug}.png`,
-  twitterCard: "summary_large_image",
-  articleAuthor: "Tejus Sahi",
-});
+// useSeoMeta({
+//   ogImage: `https://fayazahmed.com/articles/${slug}.png`,
+//   twitterCard: "summary_large_image",
+//   articleAuthor: "Tejus Sahi",
+// });
 </script>
 <style>
 .prose h2 a,
