@@ -1,18 +1,21 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   modules: [
     "@nuxt/ui",
-    "nuxt-icon",
+    "@nuxt/icon",
     "@nuxtjs/google-fonts",
     "@nuxtjs/fontaine",
     "@nuxt/image",
     "@nuxt/content",
     "@nuxthq/studio",
-    "@vueuse/nuxt"
+    "@vueuse/nuxt",
   ],
+
   ui: {
     icons: ["heroicons", "lucide"],
   },
+
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
@@ -25,15 +28,25 @@ export default defineNuxtConfig({
       },
     },
   },
+
   content: {
     highlight: {
       theme: "github-dark",
     },
   },
+
   googleFonts: {
     display: "swap",
     families: {
       Inter: [400, 500, 600, 700, 800, 900],
     },
   },
+
+  ssr: true,
+
+  nitro: {
+    preset: "netlify", // Use Netlify's preset for SSR deployment
+  },
+
+  compatibilityDate: "2024-11-09",
 });

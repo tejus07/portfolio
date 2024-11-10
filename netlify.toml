@@ -1,0 +1,9 @@
+[build]
+command = "yarn build"
+publish = ".output/public" # Nuxt 3 generates this for SSR
+functions = ".output/server" # Directory for Netlify server functions
+
+[[redirects]]
+from = "/*"
+to = "/.netlify/functions/server"
+status = 200
