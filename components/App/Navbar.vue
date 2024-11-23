@@ -37,7 +37,8 @@
 </template>
 
 <script setup>
-import { useFixedHeader } from 'vue-use-fixed-header'
+import { useFixedHeader } from "vue-use-fixed-header";
+
 const headerRef = ref(null);
 const { styles } = useFixedHeader(headerRef);
 
@@ -47,6 +48,11 @@ const items = [
     name: "Projects",
     path: "/projects",
     icon: "solar:folder-with-files-outline",
+  },
+  {
+    name:"Resume",
+    path: "/resume",
+    icon: "solar:document-text-outline"
   },
   {
     name: "Articles",
