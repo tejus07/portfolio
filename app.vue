@@ -1,4 +1,8 @@
+<script setup lang="ts">
+import { Analytics } from '@vercel/analytics/vue';
+</script>
 <template>
+  <Analytics />
   <NuxtLoadingIndicator color="#14b8a6" />
   <AppNavbar />
   <div class="h-32"></div>
