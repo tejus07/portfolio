@@ -25,6 +25,11 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    icons: ['solar:home-smile-outline', 'solar:folder-with-files-outline', 'solar:document-text-outline'],
+    scan: true
+  },
+
   content: {
     highlight: {
       theme: "github-dark",
