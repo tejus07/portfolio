@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Analytics } from '@vercel/analytics/vue';
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 </script>
 <template>
   <Analytics />
+  <SpeedInsights />
   <NuxtLoadingIndicator color="#14b8a6" />
   <AppNavbar />
   <div class="h-32"></div>
