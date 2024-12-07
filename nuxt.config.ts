@@ -7,8 +7,6 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/ui",
-    "@nuxt/icon",
-    "@nuxtjs/google-fonts",
     "@nuxtjs/fontaine",
     "@nuxt/image",
     "@nuxt/content",
@@ -29,23 +27,11 @@ export default defineNuxtConfig({
     },
   },
 
-  icon: {
-    icons: ['solar:home-smile-outline', 'solar:folder-with-files-outline', 'solar:document-text-outline'],
-    scan: true
-  },
-
   content: {
     highlight: {
       theme: "github-dark",
     },
   },
 
-  googleFonts: {
-    display: "swap",
-    families: {
-      Inter: [400, 500, 600, 700, 800, 900],
-    },
-  },
-
-  compatibilityDate: "2024-11-24",
+  compatibilityDate: "2024-12-07",
 });

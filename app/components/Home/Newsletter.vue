@@ -16,7 +16,7 @@
     <div class="flex items-center gap-3 mt-6">
       <UInput
         placeholder="Email Address"
-        icon="i-heroicons-envelope"
+        icon="solar:letter-linear"
         class="flex-1"
         size="lg"
       />
