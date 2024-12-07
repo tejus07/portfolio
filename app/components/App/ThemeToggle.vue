@@ -9,6 +9,12 @@ const isDark = computed({
     colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
   },
 });
+
+const isLoaded = ref(false);
+
+onMounted(() => {
+  isLoaded.value = true;
+});
 </script>
 
 <template>
@@ -18,6 +24,7 @@ const isDark = computed({
       @click="isDark = !isDark"
     >
       <Icon
+        v-if="isLoaded"
         aria-hidden="true"
         :name="isDark ? 'solar:sun-2-outline' : 'solar:moon-outline'"
         class="w-5 h-5"
