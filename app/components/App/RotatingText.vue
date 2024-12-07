@@ -40,28 +40,24 @@
       transform: translateY(0%);
     }
   
-    20%,
+    25%,
     36% {
       transform: translateY(-16.66%);
     }
   
-    40%,
+    50%,
     56% {
-      transform: translateY(-33.33%);
+      transform: translateY(-38.33%);
     }
   
-    60%,
+    75%,
     76% {
-      transform: translateY(-50%);
+      transform: translateY(-60%);
     }
   
-    80%,
+    100%,
     96% {
-      transform: translateY(-66.66%);
-    }
-  
-    100% {
-      transform: translateY(-83.33%);
+      transform: translateY(-77%);
     }
   }
   </style>
