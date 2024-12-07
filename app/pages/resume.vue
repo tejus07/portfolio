@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const description = "";
+const description = "Want to know me from a professional angle? Here's my detailed resume highlighting my skills, work experience, and achievements.";
 useSeoMeta({
   title: "Resume | Tejus Sahi",
   description,

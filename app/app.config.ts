@@ -26,6 +26,6 @@ export default defineAppConfig({
     },
     container: {
       constrained: "max-w-2xl",
-    },
+    }
   },
 });

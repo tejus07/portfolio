@@ -1,31 +1,24 @@
 <template>
   <main class="min-h-screen">
     <AppHeader class="mb-12" title="Projects" :description="description" />
-<!--    <div class="flex justify-end mb-4">-->
-<!--      <label for="sort" class="mr-2 text-gray-700 dark:text-gray-300"-->
-<!--        >Sort by:</label-->
-<!--      >-->
-<!--      <select-->
-<!--        id="sort"-->
-<!--        v-model="sortBy"-->
-<!--        @change="sortProjects"-->
-<!--        class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-md p-2"-->
-<!--      >-->
-<!--        <option value="name">Name</option>-->
-<!--        <option value="stars">Stars</option>-->
-<!--        <option value="forks">Forks</option>-->
-<!--        <option value="created_at">Created Date</option>-->
-<!--      </select>-->
-<!--    </div>-->
-    <div v-if="loading" class="flex justify-center items-center min-h-screen">
-      <span>Loading...</span>
-    </div>
-    <div v-else class="space-y-4">
-      <AppProjectCard
-        v-for="(project, id) in sortedProjects"
-        :key="id"
-        :project="project"
-      />
+    <!--    <div class="flex justify-end mb-4">-->
+    <!--      <label for="sort" class="mr-2 text-gray-700 dark:text-gray-300"-->
+    <!--        >Sort by:</label-->
+    <!--      >-->
+    <!--      <select-->
+    <!--        id="sort"-->
+    <!--        v-model="sortBy"-->
+    <!--        @change="sortProjects"-->
+    <!--        class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-md p-2"-->
+    <!--      >-->
+    <!--        <option value="name">Name</option>-->
+    <!--        <option value="stars">Stars</option>-->
+    <!--        <option value="forks">Forks</option>-->
+    <!--        <option value="created_at">Created Date</option>-->
+    <!--      </select>-->
+    <!--    </div>-->
+    <div class="space-y-4">
+      <AppProjectCard v-for="(project, id) in sortedProjects" :key="id" :project="project" />
     </div>
   </main>
 </template>
@@ -39,10 +32,6 @@ useSeoMeta({
   description,
 });
 
-// const { data: projects } = await useAsyncData("projects-all", () =>
-//   queryContent("/projects").find()
-// );
-
 // Define pinned repositories (by name)
 const pinnedRepos = [
   "pinned-repo-1",
@@ -51,8 +40,6 @@ const pinnedRepos = [
 ];
 
 // Projects data
-const projects = ref([]);
-const loading = ref(true);
 const sortBy = ref("created_at");
 
 // Function to fetch GitHub repositories
@@ -70,10 +57,11 @@ const fetchRepos = async () => {
     console.error("Error fetching the repositories:", error);
     return [];
   }
+
 };
 
 const sortProjects = () => {
-  projects.value.sort((a, b) => {
+  projects.value.sort((a: any, b: any) => {
     if (sortBy.value === "name") {
       return a.name.localeCompare(b.name);
     } else if (sortBy.value === "stars") {
@@ -88,14 +76,18 @@ const sortProjects = () => {
     return 0;
   });
 };
-const sortedProjects = computed(() => {
-  return [...projects.value];
-});
 
-// Fetch repositories and update projects when the component is mounted
-onMounted(async () => {
-  const githubRepos = await fetchRepos();
-  projects.value = githubRepos.map((repo) => ({
+const { data: projects } = await useAsyncData("projects-all", fetchRepos,);
+const { data: projecta } = await useAsyncData("projects-ala", () =>
+  queryContent("/projects").find()
+);
+console.log(projecta);
+
+sortProjects();
+
+
+const sortedProjects = computed(() => {
+  return projects.value.map((repo: any) => ({
     name: repo.name,
     description: repo.description,
     url: repo.html_url,
@@ -103,7 +95,5 @@ onMounted(async () => {
     forks: repo.forks_count,
     created_at: repo.created_at,
   }));
-  loading.value = false;
-  sortProjects();
 });
 </script>
