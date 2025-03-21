@@ -4,19 +4,10 @@
       FEATURED PROJECTS
     </h2>
     <div class="space-y-4">
-      <AppProjectCard
-        v-for="(project, id) in projects"
-        :key="id"
-        :project="project"
-      />
+      <AppProjectCard v-for="(project, id) in projects" :key="id" :project="project" />
     </div>
     <div class="flex items-center justify-center mt-6 text-sm">
-      <UButton
-        label="All Projects &rarr;"
-        to="/projects"
-        variant="link"
-        color="gray"
-      />
+      <UButton label="All Projects &rarr;" to="/projects" variant="link" color="gray" />
     </div>
   </div>
 </template>
@@ -56,21 +47,11 @@ interface Repository {
 const getTop3Repos = async () => {
   const githubRepos = await fetchRepos();
 
-  // Sort repositories by most recent update date
-  const sortedRepos = githubRepos.sort((a: Repository, b: Repository) => {
-    const dateA = new Date(a.updated_at);
-    const dateB = new Date(b.updated_at);
-
-    // Check for an invalid date
-    if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
-      return 0; // Or handle differently
-    }
-
-    return dateB.getTime() - dateA.getTime();
-  });
+  // Pinned repositories IDs
+  const topReposIds = [888321327, 778607751, 716207009];
 
   // Combine pinned and non-pinned, and take the top 3
-  const top3Repos = sortedRepos.slice(0, 3);
+  const top3Repos = githubRepos.filter((repo: any) => topReposIds.includes(repo.id));
 
   return top3Repos.map((repo: any) => ({
     name: repo.name,
