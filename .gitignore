@@ -24,6 +24,4 @@ logs
 !.env.example
 
 #yarn
-.yarn
-.yarn/install-state.gz
-.yarn/*.gz
+.yarn/*
